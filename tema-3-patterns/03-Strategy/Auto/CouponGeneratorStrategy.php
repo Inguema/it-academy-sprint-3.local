@@ -5,6 +5,8 @@ require_once 'CarCouponGenerator.php';
 class CouponGeneratorStrategy
 {
     private $carCouponGenerator;
+    private $seasonDiscount = 0;
+    private $stockDiscount = 0;
 
     //Objeto Interface
     public function __construct(CarCouponGenerator $carCouponGenerator)
@@ -15,9 +17,17 @@ class CouponGeneratorStrategy
     //Utiliza los métodos del objeto interface para calcular el descuento total por marca de coche
     public function getCouponDiscount():string
     {
-        $discount = $this->carCouponGenerator->addSeasonDiscount();
-        $discount = $this->carCouponGenerator->addStockDiscount();
+        $this->carCouponGenerator->addSeasonDiscount($this->seasonDiscount);
+        return $this->carCouponGenerator->addStockDiscount($this->stockDiscount);
+    }
 
-        return "Get $discount % off the price of your new car.";
+    public function setSeasonDiscount(int $seasonDiscount): void
+    {
+        $this->seasonDiscount = $seasonDiscount;
+    }
+
+    public function setStockDiscount(int $stockDiscount): void
+    {
+        $this->stockDiscount = $stockDiscount;
     }
 }

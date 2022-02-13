@@ -1,23 +1,16 @@
 <?php
 
-class TurkeyAdapter
+class TurkeyAdapter extends Turkey
 {
-    private Turkey $turkey;
-
-    public function __construct(Turkey $turkey)
-    {
-        $this->turkey = $turkey;
-    }
-
     public function quack()
     {
-        $this->turkey->gobble();
+        $this->gobble();
     }
 
     public function fly()
     {
-        for($i=1; $i <= 5; $i++) {
-            $this->turkey->fly() . "<br>";
+        for ($i=1; $i <= 5; $i++) {
+            parent::fly() . "<br>";
         }
     }
 }

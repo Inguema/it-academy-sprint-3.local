@@ -3,12 +3,12 @@
 class Tigger
 {
     private static $instance;
-    private $counter;
+    private $counter = 0;
 
     //Constructor privado, previene la creación de objetos vía new
     private function __construct()
     {
-        echo "Building character..." . PHP_EOL;
+        //echo "Building character..." . PHP_EOL; // PHP_EOL fin de línea
     }
 
     public static function getInstance() //Los métodos estáticos se utilizan el operador ::
@@ -22,7 +22,7 @@ class Tigger
     public function roar()
     {
         echo 'Grrr!' . PHP_EOL;
-        ++$this->counter;
+        ++$this->counter; //$this->counter = $this->counter + 1;
     }
 
     public function getCounter()
@@ -31,16 +31,14 @@ class Tigger
     }
 }
 
-Tigger::getInstance();
-Tigger::getInstance()->roar();
-Tigger::getInstance()->roar();
-Tigger::getInstance()->roar();
-Tigger::getInstance()->roar();
-Tigger::getInstance()->roar();
+$singleton = Tigger::getInstance();
+$singleton->roar();
+$singleton->roar();
+$singleton->roar();
+$singleton->roar();
+$singleton->roar();
 
-
-echo 'Contador = '. Tigger::getInstance()->getCounter() . PHP_EOL;
-
+echo 'Contador = '. $singleton->getCounter() . PHP_EOL;
 
 /*
 Para llamar a un método estático fuera de la clase, tenemos que usar :: operator.

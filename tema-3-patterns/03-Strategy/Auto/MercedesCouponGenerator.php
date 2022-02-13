@@ -8,19 +8,19 @@ class MercedesCouponGenerator implements CarCouponGenerator
     private bool $isHighSeason = false;
     private bool $bigStock = true;
 
-    public function addSeasonDiscount()
+    public function addSeasonDiscount($descuento)
     {
         if(!$this->isHighSeason) {
-            return $this->discount += 4;
+            return $this->discount += $descuento;
         }
-        return "Get $this->discount % off the price of your new car.";
+        return $this->discount;
     }
 
-    public function addStockDiscount()
+    public function addStockDiscount($descuento)
     {
         if($this->bigStock) {
-            return $this->discount += 10;
+            return $this->discount += $descuento;
         }
-        return "Get $this->discount % off the price of your new car.";
+        return $this->discount;
     }
 }

@@ -11,13 +11,13 @@ function duck_interaction($duck)
 }
 
 echo "The Turkey says...<br>";
-$turkey = new Turkey;
+$turkey = new Turkey();
 $turkey->gobble();
 $turkey->fly();
 echo "<hr>";
 
 echo "The Duck says...<br>";
-$duck = new Duck;
+$duck = new Duck();
 duck_interaction($duck);
 echo "<hr>";
 
